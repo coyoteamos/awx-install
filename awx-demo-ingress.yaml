@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: awx-demo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx" # Use your ingress controller
+#    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Optional if using cert-manager
+spec:
+  tls:
+  - hosts:
+    - itproteam.net
+    secretName: awx-demo-tls # TLS secret you already created
+  rules:
+  - host: itproteam.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: awx-demo-service
+            port:
+              number: 80
+

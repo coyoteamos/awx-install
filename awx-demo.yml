@@ -1,0 +1,9 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx-demo
+  namespace: awx #in case we forget to change it before executing
+spec:
+  service_type: nodeport
+  nodeport_port: 32000
