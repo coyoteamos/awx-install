@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - itproteam23.net
+    - itpr.local
     secretName: awx-demo-tls # TLS secret you already created
   rules:
-  - host: itproteam23.net
+  - host: itp.local
     http:
       paths:
       - path: /
