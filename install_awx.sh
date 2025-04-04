@@ -13,15 +13,15 @@ fi
 #sudo microk8s status --wait-ready
 
 # Add current user to the microk8s group if not already a member
-if ! groups "$USER" | grep -qw microk8s; then
-  echo "Adding $USER to microk8s group..."
-  sudo usermod -aG microk8s "$USER"
+if ! groups "amos" | grep -qw microk8s; then
+  echo "Adding amos to microk8s group..."
+  sudo usermod -aG microk8s "amos"
   echo "Re-executing script under new group membership..."
   exec sg microk8s "bash $0"
 fi
 
 # Ensure ownership of the kube config directory
-sudo chown -f -R "$USER" ~/.kube
+sudo chown -f -R "amos" ~/.kube
 
 # Enable required MicroK8s add-ons
 echo "Enabling MicroK8s add-ons: dns, storage, ingress, and helm3..."
