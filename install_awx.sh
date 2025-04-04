@@ -10,7 +10,7 @@ if ! command -v microk8s >/dev/null 2>&1; then
 fi
 
 # Wait until MicroK8s is ready
-sudo microk8s status --wait-ready
+#sudo microk8s status --wait-ready
 
 # Add current user to the microk8s group if not already a member
 if ! groups "$USER" | grep -qw microk8s; then
