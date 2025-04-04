@@ -5,15 +5,13 @@ sudo snap install microk8s --classic --channel=1.29/stable
 sudo microk8s status --wait-ready
 sudo usermod -aG microk8s $USER
 sudo chown -f -R $USER ~/.kube
+newgrp microk8s
 sudo microk8s enable dns storage ingress helm3
 sudo microk8s status --wait-ready
 sudo snap alias microk8s.kubectl kubectl
 sudo snap alias microk8s.helm3 helm
 helm repo add awx-operator https://ansible-community.github.io/awx-operator-helm/
 helm repo update
-sudo usermod -aG microk8s $USER
-sudo chown -f -R $USER ~/.kube
-newgrp microk8s
 kubectl create namespace awx
 kubectl config set-context --current --namespace=awx
 wget https://raw.githubusercontent.com/coyoteamos/awx-install/refs/heads/main/awx-demo.yaml
