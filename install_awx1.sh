@@ -17,7 +17,7 @@ kubectl create namespace awx
 kubectl config set-context --current --namespace=awx
 wget https://raw.githubusercontent.com/coyoteamos/awx-install/refs/heads/main/awx-demo.yaml
 helm install my-awx-operator awx-operator/awx-operator -n awx --create-namespace -f awx-demo.yaml
-kubectl wait --for=condition=Available deployment/my-awx-operator-awx-operator -n awx --timeout=300s
+#kubectl wait --for=condition=Available deployment/my-awx-operator-awx-operator -n awx --timeout=300s
 kubectl apply -f awx-demo.yaml -n awx
 
 wget https://raw.githubusercontent.com/coyoteamos/awx-install/refs/heads/main/awx-demo-ingress.yaml
