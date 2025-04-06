@@ -34,10 +34,11 @@ sudo mkdir -p /opt/vault/data $TLS_DIR
 sudo chown -R $VAULT_USER:$VAULT_USER /opt/vault
 
 # Generate self-signed TLS cert
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   -keyout $TLS_DIR/tls.key \
   -out $TLS_DIR/tls.crt \
-  -subj "/CN=$DOMAIN_NAME"
+  -subj "/CN=$DOMAIN_NAME" \
+  -addext "subjectAltName=DNS:$DOMAIN_NAME"
 sudo chown -R $VAULT_USER:$VAULT_USER $TLS_DIR
 
 # Configure Vault with file storage and HTTPS
